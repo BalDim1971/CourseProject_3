@@ -7,7 +7,7 @@
 
 # Подключаем конфигурационный файл с именем файла, cодержащим список операций клиента
 from data.config import name_file_operations
-from utils.view_transaction import load_operation, view_last_five_operations
+from utils.view_transaction import *
 from datetime import datetime
 
 def main():
@@ -22,7 +22,11 @@ def main():
 	if len(list_operation) == 0:
 		return
 	
-	view_last_five_operations(list_operation)
+	# Сортируем список
+	list_operation = sort_list_operation(list_operation)
+	
+	my_view_operation = view_last_five_operations(list_operation)
+	print(my_view_operation)
 
 if __name__== '__main__':
 	main()
