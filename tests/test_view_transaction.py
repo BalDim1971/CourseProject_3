@@ -11,6 +11,6 @@ def test_load_operations():
 
 
 def test_create_last_five_operations():
-	assert view_transaction.create_last_five_operations([]) == []
+	assert view_transaction.view_last_five_operations([]) == []
 	
 #########################################################################################
