@@ -6,34 +6,6 @@ import json
 from datetime import datetime
 
 
-def sort_list_operation(list_operation):
-	'''
-	Сортируем список операций пузырьковая
-	:param list_operation: список операций из файла
-	:return: отсортированный по времени список
-	'''
-	
-	# Проверяем на пустоту весь цикл
-	if len(list_operation) == 0:
-		return []
-	
-	while {} in list_operation:
-		list_operation.remove({})
-	
-	for i in range(0, len(list_operation) - 1):
-		for j in range(len(list_operation)-1):
-			my_date_object = datetime.strptime(list_operation[j].get('date'), "%Y-%m-%dT%H:%M:%S.%f")
-			date_operation = datetime.strptime(list_operation[j+1].get('date'), "%Y-%m-%dT%H:%M:%S.%f")
-			
-			# Основная операция
-			if my_date_object < date_operation:
-				temp = list_operation[j]
-				list_operation[j] = list_operation[j+1]
-				list_operation[j+1] = temp
-	
-	return list_operation
-
-
 def load_operation(name_file):
 	'''
 	Функция чтения данных по операциям из json-файла
@@ -57,6 +29,9 @@ def load_operation(name_file):
 	# Преобразуем json в стандартный список Python
 	list_operation = json.loads(raw_json)
 	
+	while {} in list_operation:
+		list_operation.remove({})
+
 	return list_operation
 
 

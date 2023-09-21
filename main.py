@@ -17,14 +17,15 @@ def main():
 	
 	# Читаем список операций из файла name_file_operations
 	list_operation = load_operation(name_file_operations)
-	
+
 	# Пустой список выходим
 	if len(list_operation) == 0:
 		return
 	
-	# Сортируем список
-	list_operation = sort_list_operation(list_operation)
-	
+	# Сортируем список по убыванию
+	list_operation.sort(key=lambda k: k['date'], reverse = True)
+
+	# Выводим последние 5 операций
 	my_view_operation = view_last_five_operations(list_operation)
 	print(my_view_operation)
 
